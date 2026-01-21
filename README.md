@@ -1,93 +1,158 @@
-# Sampling Assignment – Machine Learning
+# Sampling Assignment – PREDICTIVE ANALYSIS(UCS654)
 
 This project analyzes the impact of different sampling techniques on the
 performance of multiple machine learning models using an imbalanced dataset.
+---
+
+## 🎯 Objective
+
+The objectives of this assignment are:
+
+- To handle **class imbalance** in a real-world dataset
+- To apply **SMOTE oversampling** to balance the dataset
+- To generate multiple datasets using **sampling techniques**
+- To evaluate **five machine learning models**
+- To compare model performance using **accuracy tables**
 
 ---
 
-## 📌 Objective
-- Convert an imbalanced dataset into a balanced dataset
-- Apply multiple sampling techniques
-- Train different machine learning models
-- Compare model performance across sampling methods
+## 📊 Dataset Description
 
----
-
-## 📂 Dataset
-- Credit Card Transaction Dataset
-- Highly imbalanced binary classification problem
+- Dataset: Credit Card Transactions
 - Target variable: `Class`
+  - `0` → Non-fraudulent transaction
+  - `1` → Fraudulent transaction
+- Nature of data: Highly imbalanced
+
+### Original Class Distribution
+- Majority class: Class 0
+- Minority class: Class 1
+
+This imbalance motivates the use of oversampling techniques.
 
 ---
 
-## 🔄 Methodology & Pipeline
+## ⚖️ Class Balancing Using SMOTE
 
-### 1️⃣ Data Preprocessing
-- Loaded dataset using Pandas
-- Checked missing values and data types
-- Separated features and target variable
+SMOTE (Synthetic Minority Oversampling Technique) is applied to the **entire
+dataset** to address class imbalance.
 
-### 2️⃣ Feature Scaling
-- Applied **StandardScaler** to normalize feature values
+### Why SMOTE?
+- Prevents model bias toward the majority class
+- Generates synthetic minority class samples
+- Improves learning for rare class patterns
 
-### 3️⃣ Oversampling
-- Used **SMOTE (Synthetic Minority Over-sampling Technique)**
-- Balanced the dataset by generating synthetic minority samples
+After applying SMOTE, both classes have equal representation, which forms the
+base dataset for further sampling.
 
-### 4️⃣ Sampling Techniques Applied
-Five sampling techniques were applied to the balanced dataset:
+---
 
-1. Simple Random Sampling  
-2. Systematic Sampling  
-3. Stratified Sampling  
-4. Cluster Sampling  
-5. Bootstrap Sampling  
+## 🔁 Sampling Techniques Applied
 
-For each technique, class distribution was analyzed **before and after sampling**.
+After balancing, the following sampling techniques are applied:
+
+1. **Simple Random Sampling**
+   - Random selection of observations from the dataset
+
+2. **Systematic Sampling**
+   - Selection of every k-th data point
+
+3. **Stratified Sampling**
+   - Ensures proportional representation of classes
+
+4. **Cluster Sampling**
+   - Data divided into clusters, one cluster selected
+
+5. **Bootstrap Sampling**
+   - Sampling with replacement from the dataset
+
+For each technique, **before and after class distributions are printed**
+to show the effect of sampling.
 
 ---
 
 ## 🤖 Machine Learning Models Used
 
-Five models from different learning paradigms were selected:
+Each sampled dataset is evaluated using the following models:
 
-- Logistic Regression  
-- Decision Tree Classifier  
-- Random Forest Classifier  
-- K-Nearest Neighbors (KNN)  
-- Support Vector Machine (SVM)  
-
----
-
-## 📊 Model Evaluation
-- 5-fold Cross Validation was used
-- Accuracy was chosen as the evaluation metric
-- Each model was trained on each sampled dataset
+| Model ID | Algorithm |
+|--------|----------|
+| M1 | Logistic Regression |
+| M2 | Decision Tree |
+| M3 | Random Forest |
+| M4 | K-Nearest Neighbors |
+| M5 | Support Vector Machine |
 
 ---
 
-## 🏆 Results
-- An accuracy comparison table was generated
-- The best sampling technique for each model was identified
-- Results show that no single sampling technique is optimal for all models
+## 📈 Model Evaluation Methodology
+
+- Metric used: **Accuracy**
+- Evaluation method: **5-fold cross-validation**
+- Each model is trained and evaluated on **each sampled dataset**
+- Mean accuracy values are computed and stored in a table
 
 ---
 
-## 🧠 Conclusion
-The experiment demonstrates that model performance is highly dependent on the
-sampling strategy used. Stratified and bootstrap sampling techniques generally
-produced better results for most models.
+## 📋 Result Table Explanation
+
+The final output is an **accuracy comparison table**, where:
+
+- **Rows** represent machine learning models
+- **Columns** represent sampling techniques
+- **Cell values** indicate mean accuracy (%) obtained from cross-validation
+
+### Interpretation:
+- Higher accuracy indicates better model performance
+- For each model, the sampling technique with the **highest accuracy** is
+  considered the best choice
 
 ---
 
-## 🛠 Tools & Libraries
+## 🏆 Best Sampling Technique per Model
+
+Using the accuracy table, the best sampling technique is identified for
+each model by selecting the column with the maximum accuracy value per row.
+
+This allows a clear comparison of how different sampling methods influence
+model performance.
+
+---
+
+## ✅ Key Observations
+
+- Class imbalance significantly affects model accuracy
+- SMOTE effectively balances the dataset
+- Sampling techniques impact models differently
+- Ensemble models like Random Forest show consistently strong performance
+- No single sampling technique is universally optimal
+
+---
+
+## 🛠 Tools & Libraries Used
+
 - Python
 - Pandas, NumPy
 - Scikit-learn
-- Imbalanced-learn
-- Google Colab
+- Imbalanced-learn (SMOTE)
+
+---
+---
+
+## 👩‍💻 Author
+
+**Name:** Aishlee Joshi  
+**Enrollment / Roll No:** 102316083  
+**Course:** PREDICTIVE ANALYSIS   
+**Institution:** Thapar Institute of Engineering & Technology  
 
 ---
 
-## 📎 Author
-Aishlee Joshi
+
+## 📌 Conclusion
+
+This assignment demonstrates the importance of class balancing and sampling
+strategies in machine learning. By systematically applying multiple sampling
+techniques and models, the study highlights how preprocessing decisions
+directly influence predictive performance.
+
